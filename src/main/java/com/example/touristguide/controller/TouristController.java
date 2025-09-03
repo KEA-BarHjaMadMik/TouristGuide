@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("attractions")
 
@@ -44,12 +42,19 @@ public class TouristController {
         return "tags";
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<TouristAttraction> addAttraction(@RequestBody TouristAttraction attraction) {
-        if (attraction.getName() == null || attraction.getDescription() == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-        return new ResponseEntity<>(service.addAttraction(attraction), HttpStatus.CREATED);
+    @GetMapping("/add")
+    public String showAttractionRegistrationForm(Model model) {
+        TouristAttraction attraction = new TouristAttraction();
+        model.addAttribute("attraction", attraction);
+        model.addAttribute("cities", service.getCities());
+        model.addAttribute("tags", service.getTags());
+        return "attraction_registration_form";
+    }
+
+    @PostMapping("/save")
+    public String registerAttraction(@ModelAttribute TouristAttraction attraction) {
+        service.addAttraction(attraction);
+        return "redirect:/attractions";
     }
 
     @PostMapping("/update")

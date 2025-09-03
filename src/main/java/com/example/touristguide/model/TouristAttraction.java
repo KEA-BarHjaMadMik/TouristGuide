@@ -7,21 +7,27 @@ public class TouristAttraction {
     private int attractionId;
     private String name;
     private String description;
-    private List<String> tags;
+    private String city;
+    private List<AttractionTags> tags;
 
-    public TouristAttraction(int attractionId, String name, String description, List<String> tags) {
+    public TouristAttraction(){
+        //Default constructor
+    }
+
+    public TouristAttraction(int attractionId, String name, String description, String city, List<AttractionTags> tags) {
         this.attractionId = attractionId;
         this.name = name;
         this.description = description;
+        this.city = city;
         this.tags = tags;
     }
 
-    public TouristAttraction(String name, String description) {
-        this(0, name, description, new ArrayList<>());
+    public TouristAttraction(String name, String description, String city) {
+        this(0, name, description, city, new ArrayList<>());
     }
 
-    public TouristAttraction(String name, String description, List<String> tags) {
-        this(0, name, description, tags);
+    public TouristAttraction(String name, String description, String city, List<AttractionTags> tags) {
+        this(0, name, description, city, tags);
     }
 
     public int getAttractionId(){
@@ -48,11 +54,19 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public List<String> getTags(){
+    public List<AttractionTags> getTags(){
         return tags;
     }
 
-    public void setTags(ArrayList<String> tags){
+    public void setTags(List<AttractionTags> tags){
         this.tags = tags;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public void setCity(String city){
+        this.city = city;
     }
 }
