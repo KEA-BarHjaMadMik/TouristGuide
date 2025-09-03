@@ -12,9 +12,11 @@
     <form action="#" th:action="@{/attractions/save}" th:object="${attraction}" method="post">
         <label for="name">Navn:</label>
         <input id="name" type="text" th:field="*{name}"/>
+        <br>
 
         <label for="description">Beskrivelse:</label>
         <input id="description" type="text" th:field="*{description}"/>
+        <br>
 
         <label for="city">By:</label>
         <select id="city" th:field="*{city}">
@@ -26,8 +28,12 @@
         <div id="tags" th:each="tag: ${tags}">
             <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:text="${tag.getDisplayName()}"/>
         </div>
+        <br>
+
         <button type="submit">OK</button>
+        <a th:href="@{/attractions}"><button type="button">Fortryd</button></a>
     </form>
+
 </div>
 </body>
 </html>
