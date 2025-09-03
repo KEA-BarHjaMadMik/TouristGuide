@@ -5,6 +5,7 @@ import com.example.touristguide.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +22,9 @@ public class TouristController {
 
 
     @GetMapping()
-    public ResponseEntity<List<TouristAttraction>> getAttractions() {
-        List<TouristAttraction> attractions = service.getAttractions();
-        return new ResponseEntity<>(attractions, HttpStatus.OK);
+    public String getAttractions(Model model) {
+        model.addAttribute("attractions", service.getAttractions());
+        return "attractionList";
     }
 
     @GetMapping("/{name}")
@@ -33,6 +34,14 @@ public class TouristController {
             return new ResponseEntity<>(attraction, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/{name}/tags")
+    public String getAttractionTags(@PathVariable String name, Model model){
+        model.addAttribute("name", name);
+        TouristAttraction attraction = service.findAttractionByName(name);
+        model.addAttribute("tags", attraction.getTags());
+        return "tags";
     }
 
     @PostMapping("/add")

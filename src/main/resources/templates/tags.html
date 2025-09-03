@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+
+<h1><span th:text="${name}"></span> tags</h1>
+<table>
+    <tr th:each="tag: ${tags}">
+        <td th:text="${tag}"></td>
+    </tr>
+</table>
+</body>
+</html>
