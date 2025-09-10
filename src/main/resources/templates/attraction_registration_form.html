@@ -10,25 +10,27 @@
     <h1>Tilføj Turistattraktion</h1>
 
     <form action="#" th:action="@{/attractions/save}" th:object="${attraction}" method="post">
-        <label for="name">Navn:</label>
-        <input id="name" type="text" th:field="*{name}"/>
-        <br>
-
-        <label for="description">Beskrivelse:</label>
-        <input id="description" type="text" th:field="*{description}"/>
-        <br>
-
-        <label for="city">By:</label>
-        <select id="city" th:field="*{city}">
-            <option th:each="city: ${cities}" th:value="${city}" th:text="${city.getDisplayName()}"></option>
-        </select>
-        <br>
-
-        <label for="tags">Tags:</label>
-        <div id="tags" th:each="tag: ${tags}">
-            <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:text="${tag.getDisplayName()}"/>
+        <div>
+            <label for="name">Navn:</label>
+            <input required id="name" type="text" th:field="*{name}"/>
         </div>
-        <br>
+        <div>
+            <label for="description">Beskrivelse:</label>
+            <input required id="description" type="text" th:field="*{description}"/>
+        </div>
+        <div>
+            <label for="city">By:</label>
+            <select id="city" th:field="*{city}">
+                <option th:each="city: ${cities}" th:value="${city}" th:text="${city.getDisplayName()}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="tags">Tags:</label>
+            <br>
+            <span id="tags" th:each="tag: ${tags}">
+                <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:text="${tag.getDisplayName()}"/>
+            </span>
+        </div>
 
         <button type="submit">OK</button>
         <a th:href="@{/attractions}"><button type="button">Fortryd</button></a>
