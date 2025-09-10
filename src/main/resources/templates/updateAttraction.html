@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Tilføj Turistattraktion</title>
+    <title>Rediger Turistattraktion</title>
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
 <div class="content_wrapper">
-    <h1>Tilføj Turistattraktion</h1>
+    <h1>Ændring af informationer</h1>
 
-    <form action="#" th:action="@{/attractions/save}" th:object="${attraction}" method="post">
+    <form action="#" th:action="@{/attractions/update}" th:object="${attraction}" method="post">
         <div>
             <label for="name">Navn:</label>
-            <input required id="name" type="text" th:field="*{name}"/>
+            <input readonly id="name" type="text" th:field="*{name}"/>
         </div>
         <div>
             <label for="description">Beskrivelse:</label>

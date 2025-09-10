@@ -57,33 +57,34 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
-    @PostMapping("/update")
-    public ResponseEntity<TouristAttraction> updateAttraction(@RequestBody TouristAttraction attraction) {
-        if (attraction.getName() == null || attraction.getDescription() == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+    @GetMapping("/{name}/edit")
+    public String editAttraction(@PathVariable String name, Model model) {
+        TouristAttraction attraction = service.findAttractionByName(name);
+        if(attraction == null) {
+            throw new IllegalArgumentException("Invalid attraction name");
         }
 
-        attraction = service.updateAttraction(attraction);
-
-        if (attraction != null) {
-            return new ResponseEntity<>(attraction, HttpStatus.ACCEPTED);
-        }
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        model.addAttribute("attraction", attraction);
+        model.addAttribute("cities", service.getCities());
+        model.addAttribute("tags", service.getTags());
+        return "updateAttraction";
     }
 
-    @PostMapping("/delete/{name}")
-    public ResponseEntity<TouristAttraction> deleteAttraction(@PathVariable String name){
-        if (name == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+    @PostMapping("/update")
+    public String updateAttraction(@ModelAttribute TouristAttraction attraction) {
+        if (service.updateAttraction(attraction) != null) {
+            return "redirect:/attractions";
         }
 
-        TouristAttraction attraction = service.deleteAttraction(name);
+        throw new IllegalArgumentException("Tourist attraction not found");
+    }
 
-        if (attraction != null) {
-            return new ResponseEntity<>(attraction, HttpStatus.ACCEPTED);
+    @PostMapping("/{name}/delete")
+    public String deleteAttraction(@PathVariable String name){
+        if (service.deleteAttraction(name) != null) {
+            return "redirect:/attractions";
         }
 
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        throw new IllegalArgumentException("Tourist attraction not found");
     }
 }

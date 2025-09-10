@@ -8,7 +8,9 @@
 <body>
 <div class="content_wrapper">
     <h1>Turistattraktioner</h1>
-    <table>
+
+    <p th:if="${attractions.isEmpty()}">Ingen attraktioner at vise...</p>
+    <table th:unless="${attractions.isEmpty()}">
         <thead>
         <tr>
             <th>Navn</th>
@@ -20,9 +22,17 @@
         <tr th:each="attraction: ${attractions}">
             <td th:text="${attraction.name}"></td>
             <td th:text="${attraction.description}"></td>
-            <td><a th:href="@{/attractions/{name}/tags(name=${attraction.name})}">
-                <button>Tags</button>
-            </a></td>
+            <td>
+                <a th:href="@{/attractions/{name}/edit(name=${attraction.name})}">
+                    <button>Opdater</button>
+                </a>
+                <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post">
+                    <button type="submit">Slet</button>
+                </form>
+                <a th:href="@{/attractions/{name}/tags(name=${attraction.name})}">
+                    <button>Tags</button>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
@@ -54,7 +64,8 @@
         </a> |
         <a href="https://www.getyourguide.dk/kobenhavn-l12/kobenhavn-tandem-skydive-det-ultimative-kobenhavner-eventyr-t836376/?ranking_uuid=24527097-a8d7-46bd-b36b-4f5fb4d689c0">Skydiving
         </a> |
-        <a href="https://www.visitaarhus.com/aarhus-region/see-and-do/outdoor-activities/mountain-biking">Mountain biking
+        <a href="https://www.visitaarhus.com/aarhus-region/see-and-do/outdoor-activities/mountain-biking">Mountain
+            biking
         </a>
     </nav>
 
