@@ -16,7 +16,7 @@ public class TouristAttraction {
 
     public TouristAttraction(int attractionId, String name, String description, String city, List<AttractionTags> tags) {
         this.attractionId = attractionId;
-        this.name = name;
+        this.name = name.replace('_','-');
         this.description = description;
         this.city = city;
         this.tags = tags;
@@ -68,5 +68,9 @@ public class TouristAttraction {
 
     public void setCity(String city){
         this.city = city;
+    }
+
+    public String getUrlName(){
+        return name.replace(' ', '_');
     }
 }
