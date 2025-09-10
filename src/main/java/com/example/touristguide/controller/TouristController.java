@@ -36,16 +36,14 @@ public class TouristController {
 
     @GetMapping("/{name}/tags")
     public String getAttractionTags(@PathVariable String name, Model model){
-        model.addAttribute("name", name);
         TouristAttraction attraction = service.findAttractionByName(name);
-        model.addAttribute("tags", attraction.getTags());
+        model.addAttribute("attraction", attraction);
         return "tags";
     }
 
     @GetMapping("/add")
     public String showAttractionRegistrationForm(Model model) {
-        TouristAttraction attraction = new TouristAttraction();
-        model.addAttribute("attraction", attraction);
+        model.addAttribute("attraction", new TouristAttraction());
         model.addAttribute("cities", service.getCities());
         model.addAttribute("tags", service.getTags());
         return "attraction_registration_form";

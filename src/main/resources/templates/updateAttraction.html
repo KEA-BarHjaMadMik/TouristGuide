@@ -12,12 +12,12 @@
     <form action="#" th:action="@{/attractions/update}" th:object="${attraction}" method="post">
         <div class="form_row">
             <label for="name">Navn:</label>
-            <input readonly id="name" type="text" th:field="*{name}"/>
+            <input type="text" id="name" th:field="*{name}" readonly/>
         </div>
 
         <div class="form_row">
             <label for="description">Beskrivelse:</label>
-            <textarea required id="description" th:rows="5" th:cols="25" th:field="*{description}"></textarea>
+            <textarea id="description" th:field="*{description}" th:rows="5" th:cols="25" required></textarea>
         </div>
 
         <div class="form_row">

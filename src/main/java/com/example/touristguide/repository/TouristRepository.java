@@ -11,27 +11,22 @@ import java.util.List;
 
 @Repository
 public class TouristRepository {
-    private final List<TouristAttraction> touristAttractions;
+    private final List<TouristAttraction> attractions;
     private final List<DanishCity> cities;
     private final List<AttractionTags> tags;
-    private int attractionId;
 
     public TouristRepository() {
-        this.touristAttractions = new ArrayList<>();
+        this.attractions = new ArrayList<>();
         this.cities = Arrays.asList(DanishCity.values());
         this.tags = Arrays.asList(AttractionTags.values());
         populateAttractions();
-    }
-
-    private int nextAttractionId() {
-        return ++attractionId;
     }
 
     private void populateAttractions() {
         addAttraction(new TouristAttraction(
                         "GOKART",
                         "Oplev fart, sjov og adrenalin på vores gokartbane! Udfordr venner, familie eller kolleger i spændende løb, hvor skarpe sving og høj fart giver den ultimative køreglæde. Perfekt til både nybegyndere og fartentusiaster.",
-                        "Struer",
+                        DanishCity.SKIVE,
                         Arrays.asList(
                                 AttractionTags.GOKART,
                                 AttractionTags.SJAELLAND,
@@ -43,7 +38,7 @@ public class TouristRepository {
         addAttraction(new TouristAttraction(
                         "PRØVEKØR_DRØMMEBILEN_-_PORSCHE_911_CARRERA_S",
                         "Lej din drømmebil for en dag! Oplev drømmen og prøv en af verdens mest berømte biler - Porsche 911 Carrera S. Bilen er i sort metallic med sort læderindtræk og baghjulstræk ligesom en rigtig Porsche 911 skal være. Bilen er desuden udstyret med et sportsudstødningssystem for at få mere lyd i bilen og et Bose lydsystem, så du kan nyde din yndlingsmusik, mens du kører. Udover det er den også udstyret med lir i form af Porsche active suspension management, 8-trins dobbeltkoblingsboks, Apple carplay og glassoltag.",
-                        "Malmö",
+                        DanishCity.AALBORG,
                         Arrays.asList(
                                 AttractionTags.MALMOE,
                                 AttractionTags.BILER,
@@ -61,7 +56,7 @@ public class TouristRepository {
                                 "Vores professionelle og specialuddannede instruktører vil guide jer til at udfordre egne grænser i sikre rammer.\n" +
                                 "\n" +
                                 "Et tandemspring er den perfekte anledning til at komme hinanden ved, idet at i fastspændes i hver jeres body-harness, og tager springet sammen.",
-                        "Herning",
+                        DanishCity.HERNING,
                         Arrays.asList(
                                 AttractionTags.TANDEM,
                                 AttractionTags.HOEJDER,
@@ -78,7 +73,7 @@ public class TouristRepository {
                         "Perfekt som gave, som en grænseoverskridende udfordring til dig selv – eller som et uforglemmeligt højdepunkt på dit besøg i København.\n" +
                         "\n" +
                         " Er du klar til at tage springet?",
-                        "København S",
+                        DanishCity.KOEBENHAVN,
                         Arrays.asList(
                                 AttractionTags.BUNGEEJUMP,
                                 AttractionTags.SJAELLAND,
@@ -89,29 +84,29 @@ public class TouristRepository {
     }
 
     public List<TouristAttraction> getAttractions() {
-        return touristAttractions;
+        return attractions;
     }
 
     public TouristAttraction findAttractionByName(String name) {
-        for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getName().equalsIgnoreCase(name)) {
-                return touristAttraction;
+        for (TouristAttraction attraction : attractions) {
+            if (attraction.getName().equalsIgnoreCase(name)) {
+                return attraction;
             }
         }
         return null;
     }
 
     public TouristAttraction addAttraction(TouristAttraction attraction) {
-        attraction.setAttractionId(nextAttractionId());
-        touristAttractions.add(attraction);
+        attractions.add(attraction);
         return attraction;
     }
 
-    public TouristAttraction updateAttraction(TouristAttraction attraction) {
-        TouristAttraction oldAttraction = findAttractionByName(attraction.getName());
-        if (oldAttraction != null) {
-            oldAttraction.setDescription(attraction.getDescription());
-            return oldAttraction;
+    public TouristAttraction updateAttraction(TouristAttraction updatedAttraction) {
+        for (int i = 0; i < attractions.size(); i++) {
+            if (attractions.get(i).getName().equalsIgnoreCase(updatedAttraction.getName())) {
+                attractions.set(i, updatedAttraction);
+                return attractions.get(i);
+            }
         }
         return null;
     }
@@ -119,7 +114,7 @@ public class TouristRepository {
     public TouristAttraction deleteAttraction(String name) {
         TouristAttraction attraction = findAttractionByName(name);
         if (attraction != null) {
-            touristAttractions.remove(attraction);
+            attractions.remove(attraction);
             return attraction;
         }
         return null;

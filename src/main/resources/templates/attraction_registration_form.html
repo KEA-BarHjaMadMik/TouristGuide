@@ -12,7 +12,7 @@
     <form action="#" th:action="@{/attractions/save}" th:object="${attraction}" method="post">
         <div class="form_row">
             <label for="name">Navn:</label>
-            <input readonly id="name" type="text" th:field="*{name}"/>
+            <input required id="name" type="text" th:field="*{name}"/>
         </div>
 
         <div class="form_row">
