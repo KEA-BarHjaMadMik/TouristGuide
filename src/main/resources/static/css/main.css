@@ -55,16 +55,17 @@ table, th, td {
     margin-bottom: 10px;
 }
 
-.form_row label {
+.form_row > label {
     display: inline-block;
-    width: 200px;
+    width: 150px;
     margin-right: 10px;
     text-align: left;
 }
 
 .form_row input,
 .form_row select,
-.form_row textarea {
+.form_row textarea,
+#tags {
     flex: 1;
     padding: 5px;
     box-sizing: border-box;
@@ -72,6 +73,23 @@ table, th, td {
 
 .form_actions {
     margin-top: 20px;
+}
+
+/* Tags container inside form_row */
+#tags {
+    display: flex;
+    flex-wrap: wrap;      /* checkboxes can wrap to next line */
+    gap: 10px 20px;       /* row gap, col gap (smaller gap is cleaner) */
+    align-items: flex-start;
+    justify-content: flex-start; /* ✅ left-align instead of right */
+}
+
+/* Each checkbox + text */
+#tags label {
+    display: inline-flex;  /* inline-flex keeps box and text close */
+    align-items: center;   /* vertical align text with checkbox */
+    gap: 5px;              /* small gap between box and text */
+    margin: 0;             /* remove unexpected margins */
 }
 
 /* Buttons */
@@ -86,6 +104,7 @@ button, button[type="submit"],
     color: #000;
     text-decoration: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover,

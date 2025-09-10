@@ -29,9 +29,12 @@
 
         <div class="form_row">
             <label for="tags">Tags:</label>
-            <span id="tags" th:each="tag: ${tags}">
-                <input type="checkbox" th:field="*{tags}" th:value="${tag}" th:text="${tag.getDisplayName()}"/>
-            </span>
+            <div id="tags">
+                <label th:each="tag: ${tags}">
+                    <input type="checkbox" th:field="*{tags}" th:value="${tag}"/>
+                    <span th:text="${tag.getDisplayName()}"></span>
+                </label>
+            </div>
         </div>
 
         <div class="form_actions">
