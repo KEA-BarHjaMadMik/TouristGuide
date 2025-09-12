@@ -51,28 +51,31 @@ public class TouristRepository {
 
         addAttraction(new TouristAttraction(
                         "TANDEMSPRING",
-                        "DEN ULTIMATIVE OPLEVELSE MED ET ANDET MENNESKE! TAG DIN VEN ELLER KÆRESTE I HÅNDEN, SPRING UD I DET OG OPLEV SUSET I MAVEN SAMMEN. DENNE OPLEVELSE VIL UDEN TVIVL KNYTTE BÅND FOR LIVET.\n" +
-                                "\n" +
-                                "Vores professionelle og specialuddannede instruktører vil guide jer til at udfordre egne grænser i sikre rammer.\n" +
-                                "\n" +
-                                "Et tandemspring er den perfekte anledning til at komme hinanden ved, idet at i fastspændes i hver jeres body-harness, og tager springet sammen.",
+                        """
+                                DEN ULTIMATIVE OPLEVELSE MED ET ANDET MENNESKE! TAG DIN VEN ELLER KÆRESTE I HÅNDEN, SPRING UD I DET OG OPLEV SUSET I MAVEN SAMMEN. DENNE OPLEVELSE VIL UDEN TVIVL KNYTTE BÅND FOR LIVET.
+                                
+                                Vores professionelle og specialuddannede instruktører vil guide jer til at udfordre egne grænser i sikre rammer.
+                                
+                                Et tandemspring er den perfekte anledning til at komme hinanden ved, idet at i fastspændes i hver jeres body-harness, og tager springet sammen.""",
                         DanishCity.HERNING,
                         Arrays.asList(
                                 AttractionTags.TANDEM,
                                 AttractionTags.HOEJDER,
-                                AttractionTags.FRITFALD
+                                AttractionTags.FRIT_FALD
                         )
                 )
         );
 
         addAttraction(new TouristAttraction(
-                        "BUNGEEJUMPING", "Få et adrenalinsus ud over det sædvanlige med Københavns vildeste oplevelse: bungee jump fra en kran på hele 69 meters højde midt på Refshaleøen. Her får du en unik kombination af fart, frihed og udsigt – du svæver frit med Københavns skyline, havnen og Øresund som baggrund.\n" +
-                        "\n" +
-                        "Uanset om du er erfaren eventyrer eller førstegangshopper, står professionelle instruktører klar til at guide dig trygt gennem oplevelsen. Alt sikkerhedsudstyr er inkluderet, og du får en oplevelse, der garanteret sætter sig på nethinden for livet.\n" +
-                        "\n" +
-                        "Perfekt som gave, som en grænseoverskridende udfordring til dig selv – eller som et uforglemmeligt højdepunkt på dit besøg i København.\n" +
-                        "\n" +
-                        " Er du klar til at tage springet?",
+                        "BUNGEEJUMPING",
+                        """
+                                Få et adrenalinsus ud over det sædvanlige med Københavns vildeste oplevelse: bungee jump fra en kran på hele 69 meters højde midt på Refshaleøen. Her får du en unik kombination af fart, frihed og udsigt – du svæver frit med Københavns skyline, havnen og Øresund som baggrund.
+                                
+                                Uanset om du er erfaren eventyrer eller førstegangshopper, står professionelle instruktører klar til at guide dig trygt gennem oplevelsen. Alt sikkerhedsudstyr er inkluderet, og du får en oplevelse, der garanteret sætter sig på nethinden for livet.
+                                
+                                Perfekt som gave, som en grænseoverskridende udfordring til dig selv – eller som et uforglemmeligt højdepunkt på dit besøg i København.
+                                
+                                Er du klar til at tage springet?""",
                         DanishCity.KOEBENHAVN,
                         Arrays.asList(
                                 AttractionTags.BUNGEEJUMP,
@@ -119,12 +122,12 @@ public class TouristRepository {
         }
         return null;
     }
-    
-    public List<DanishCity> getCities(){
+
+    public List<DanishCity> getCities() {
         return cities;
     }
 
-    public List<AttractionTags> getTags(){
+    public List<AttractionTags> getTags() {
         return tags;
     }
 }

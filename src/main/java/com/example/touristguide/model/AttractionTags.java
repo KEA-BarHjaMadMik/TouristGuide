@@ -4,7 +4,7 @@ public enum AttractionTags {
     BILER,
     BUNGEEJUMP,
     FART,
-    FRITFALD,
+    FRIT_FALD,
     FYN,
     GOKART,
     HOEJDER,
