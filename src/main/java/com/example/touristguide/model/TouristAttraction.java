@@ -1,6 +1,7 @@
 package com.example.touristguide.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class TouristAttraction {
     private String name;
@@ -49,5 +50,17 @@ public class TouristAttraction {
 
     public void setCity(DanishCity city){
         this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TouristAttraction that = (TouristAttraction) o;
+        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && city == that.city && Objects.equals(tags, that.tags);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, city, tags);
     }
 }

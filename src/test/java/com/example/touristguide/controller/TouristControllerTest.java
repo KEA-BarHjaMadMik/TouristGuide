@@ -14,9 +14,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -67,15 +64,32 @@ class TouristControllerTest {
     }
 
     @Test
-    void shouldRegisterAttraction() throws Exception{
-//        mockMvc.perform(post("/attractions/save")
-//                        .param("name", "Storkespringvandet")
-//                        .param("description", "Springvand i København")
-//                        .param("city", "ODENSE")
-//                        .param("tags", "SJAELLAND")
-//                        .param("tags", "LUKSUS"))
-//                .andExpect(status().is3xxRedirection())
-//                .andExpect(view().name("redirect:/attractions"));
+    void shouldRegisterAttraction() throws Exception {
+        mockMvc.perform(post("/attractions/save")
+                        .param("name", "Storkespringvandet")
+                        .param("description", "Springvand i København")
+                        .param("city", "ODENSE")
+                        .param("tags", "SJAELLAND")
+                        .param("tags", "LUKSUS"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/attractions"));
+
+//        ArgumentCaptor<TouristAttraction> captor = ArgumentCaptor.forClass(TouristAttraction.class);
+//        verify(touristService).addAttraction(captor.capture());
+//
+//        TouristAttraction captured = captor.getValue();
+//        assertEquals("Storkespringvandet", captured.getName());
+//        assertEquals("Springvand i København", captured.getDescription());
+//        assertEquals(DanishCity.ODENSE, captured.getCity());
+
+        verify(touristService).addAttraction(
+                new TouristAttraction(
+                        "Storkespringvandet",
+                        "Springvand i København",
+                        DanishCity.ODENSE,
+                        List.of(AttractionTags.SJAELLAND, AttractionTags.LUKSUS)
+                )
+        );
     }
 
     @Test
