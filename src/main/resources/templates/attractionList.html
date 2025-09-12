@@ -23,7 +23,7 @@
         <tr th:each="attraction: ${attractions}">
             <td th:text="${attraction.name}"></td>
             <td th:text="${attraction.description}"></td>
-            <td th:text="${attraction.city.getDisplayName()}"></td>
+            <td th:if="${attraction.city != null}" th:text="${attraction.city.getDisplayName()}"></td>
             <td>
                 <a class="btn" th:href="@{/attractions/{name}/edit(name=${attraction.name})}">Opdater</a>
                 <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post">
