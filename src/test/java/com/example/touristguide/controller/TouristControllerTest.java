@@ -6,12 +6,14 @@ import com.example.touristguide.model.TouristAttraction;
 import com.example.touristguide.service.TouristService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -56,7 +58,16 @@ class TouristControllerTest {
     }
 
     @Test
-    void getAttractionTags() {
+    void shouldGetAttractionTags() throws Exception {
+        TouristAttraction attraction = new TouristAttraction("GOKART", null, null, List.of(AttractionTags.LUKSUS, AttractionTags.SJAELLAND));
+        when(touristService.findAttractionByName("GOKART")).thenReturn(attraction);
+
+        mockMvc.perform(get("/attractions/GOKART/tags"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("tags"))
+                .andExpect(model().attributeExists("attraction"));
+
+        verify(touristService).findAttractionByName("GOKART");
     }
 
     @Test
