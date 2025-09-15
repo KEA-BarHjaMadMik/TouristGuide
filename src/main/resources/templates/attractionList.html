@@ -6,64 +6,40 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
-<div class="content_wrapper">
-    <h1>Turistattraktioner</h1>
+<main>
+    <div class="content_wrapper">
+        <h1>Turistattraktioner</h1>
 
-    <p th:if="${attractions.isEmpty()}">Ingen attraktioner at vise...</p>
-    <table th:unless="${attractions.isEmpty()}">
-        <thead>
-        <tr>
-            <th>Navn</th>
-            <th>Beskrivelse</th>
-            <th>By</th>
-        </tr>
-        </thead>
+        <p th:if="${attractions.isEmpty()}">Ingen attraktioner at vise...</p>
+        <table th:unless="${attractions.isEmpty()}">
+            <thead>
+            <tr>
+                <th>Navn</th>
+                <th>Beskrivelse</th>
+                <th>By</th>
+            </tr>
+            </thead>
 
-        <tbody>
-        <tr th:each="attraction: ${attractions}">
-            <td th:text="${attraction.name}"></td>
-            <td th:text="${attraction.description}"></td>
-            <td th:if="${attraction.city != null}" th:text="${attraction.city.getDisplayName()}"></td>
-            <td>
-                <a class="btn" th:href="@{/attractions/{name}/edit(name=${attraction.name})}">Opdater</a>
-                <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post">
-                    <button type="submit">Slet</button>
-                </form>
-                <a class="btn" th:href="@{/attractions/{name}/tags(name=${attraction.name})}">Tags</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            <tbody>
+            <tr th:each="attraction: ${attractions}">
+                <td th:text="${attraction.name}"></td>
+                <td th:text="${attraction.description}"></td>
+                <td th:if="${attraction.city != null}" th:text="${attraction.city.getDisplayName()}"></td>
+                <td>
+                    <a class="btn" th:href="@{/attractions/{name}/edit(name=${attraction.name})}">Opdater</a>
+                    <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post">
+                        <button type="submit">Slet</button>
+                    </form>
+                    <a class="btn" th:href="@{/attractions/{name}/tags(name=${attraction.name})}">Tags</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 
-    <a class="btn" th:href="@{/attractions/add}">Tilføj attraktion</a>
-</div>
+        <a class="btn" th:href="@{/attractions/add}">Tilføj attraktion</a>
+    </div>
+</main>
 
-<!-- FOOTER
---------------------------------->
-<footer>
-    <p>Kontakt:</p>
-    <ul class="bullet_list">
-        <li>Tlf: +45 29 85 51 58</li>
-        <li>Email: <a href="mailto:contact@adrenalindenmark.com">contact@adrenalinedenmark.com</a></li>
-    </ul>
-
-    <p>
-        Find os her:
-        <a href="https://maps.app.goo.gl/d9JBche4gujABiCX9" target="_blank">
-            Se rute i Google Maps
-        </a>
-    </p>
-
-    <p>Andre websider:</p>
-    <nav>
-        <a href="https://www.visitcopenhagen.com/copenhagen/planning/kitekollektivet-gdk1123099">Kitesurfing
-        </a> |
-        <a href="https://www.getyourguide.dk/kobenhavn-l12/kobenhavn-tandem-skydive-det-ultimative-kobenhavner-eventyr-t836376/?ranking_uuid=24527097-a8d7-46bd-b36b-4f5fb4d689c0">Skydiving
-        </a> |
-        <a href="https://www.visitaarhus.com/aarhus-region/see-and-do/outdoor-activities/mountain-biking">Mountain
-            biking
-        </a>
-    </nav>
-</footer>
+<div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>

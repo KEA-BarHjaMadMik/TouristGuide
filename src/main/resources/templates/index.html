@@ -7,16 +7,17 @@
 </head>
 <body>
 
-<div class="content_wrapper">
-    <!-- HEADER
-    --------------------------------->
-    <header class="center_aligned">
-        <h1>Velkommen til Adrenaline Denmark – din guide til vilde oplevelser!</h1>
-    </header>
+<!-- HEADER
+--------------------------------->
 
-    <!-- MAIN
-    --------------------------------->
-    <main>
+<header></header>
+
+<!-- MAIN
+--------------------------------->
+
+<main>
+    <div class="content_wrapper">
+        <h1 class="center_aligned">Velkommen til Adrenaline Denmark – din guide til vilde oplevelser!</h1>
         <p>Er du typen, der søger sus i maven, fart over feltet og oplevelser, der får pulsen til at stige? Så er vores
             turistguide lige noget for dig. Her finder du en samlet oversigt over de bedste attraktioner i Danmark for
             adrenalin-junkies – fra højtflyvende aktiviteter til nervepirrende udfordringer på land og til vands.</p>
@@ -44,7 +45,8 @@
                     <a href="http://localhost:8080/attractions/GOKART">
                         <img src="/images/attraction_gokart.png" alt="Adrenalinsus på Sjælland i gokarts">
                         <h3>GOKART</h3>
-                        <p>Oplev fart, sjov og adrenalin på vores gokartbane! Udfordr venner, familie eller kolleger i spændende løb, hvor skarpe sving og høj fart giver den ultimative køreglæde...</p>
+                        <p>Oplev fart, sjov og adrenalin på vores gokartbane! Udfordr venner, familie eller kolleger i
+                            spændende løb, hvor skarpe sving og høj fart giver den ultimative køreglæde...</p>
                     </a>
                 </li>
 
@@ -61,41 +63,17 @@
                     <a href="http://localhost:8080/attractions/tandemspring">
                         <img src="/images/attraction_skydive.png" alt="Tandem skydive">
                         <h3>TANDEMSPRING</h3>
-                        <p>Den ultimative oplevelse med et andet menneske! Tag din ven eller kæreste i hånden, spring ud i det og oplev suset i maven sammen. Denne oplevelse vil uden tvivl knytte bånd for livet...</p>
+                        <p>Den ultimative oplevelse med et andet menneske! Tag din ven eller kæreste i hånden, spring ud
+                            i det og oplev suset i maven sammen. Denne oplevelse vil uden tvivl knytte bånd for
+                            livet...</p>
                     </a>
                 </li>
             </ul>
         </div>
         <a href="http://localhost:8080/attractions"><h2>Se alle attraktioner</h2></a>
+    </div>
+</main>
 
-    </main>
-</div>
-<!-- FOOTER
---------------------------------->
-<footer>
-    <p>Kontakt:</p>
-    <ul class="bullet_list">
-        <li>Tlf: +45 29 85 51 58</li>
-        <li>Email: <a href="mailto:contact@adrenalindenmark.com">contact@adrenalinedenmark.com</a></li>
-    </ul>
-
-    <p>
-        Find os her:
-        <a href="https://maps.app.goo.gl/d9JBche4gujABiCX9" target="_blank">
-            Se rute i Google Maps
-        </a>
-    </p>
-
-    <p>Andre websider:</p>
-    <nav>
-        <a href="https://www.visitcopenhagen.com/copenhagen/planning/kitekollektivet-gdk1123099">Kitesurfing
-        </a> |
-        <a href="https://www.getyourguide.dk/kobenhavn-l12/kobenhavn-tandem-skydive-det-ultimative-kobenhavner-eventyr-t836376/?ranking_uuid=24527097-a8d7-46bd-b36b-4f5fb4d689c0">Skydiving
-        </a> |
-        <a href="https://www.visitaarhus.com/aarhus-region/see-and-do/outdoor-activities/mountain-biking">Mountain biking
-        </a>
-    </nav>
-
-</footer>
+<div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>
