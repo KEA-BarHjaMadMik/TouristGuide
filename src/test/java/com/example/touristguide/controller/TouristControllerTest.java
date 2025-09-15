@@ -59,15 +59,18 @@ class TouristControllerTest {
 
     @Test
     void shouldGetAttractionTags() throws Exception {
-        TouristAttraction attraction = new TouristAttraction("GOKART", null, null, List.of(AttractionTags.LUKSUS, AttractionTags.SJAELLAND));
-        when(touristService.findAttractionByName("GOKART")).thenReturn(attraction);
+        String pathVariable = "GOKART";
+
+        TouristAttraction attraction = new TouristAttraction(pathVariable, null, null, null);
+
+        when(touristService.findAttractionByName(pathVariable)).thenReturn(attraction);
 
         mockMvc.perform(get("/attractions/GOKART/tags"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("tags"))
                 .andExpect(model().attributeExists("attraction"));
 
-        verify(touristService).findAttractionByName("GOKART");
+        verify(touristService).findAttractionByName(pathVariable);
     }
 
     @Test
