@@ -11,19 +11,24 @@ html {
     box-sizing: inherit;
 }
 
-html, body {
+html, body{
     height: 100%;
 }
 
 body {
+    font-family: Arial, Serif, serif;
+    margin: 0;
+}
+
+main {
+    display: flex;
     background: url(../images/BG_Klitmøller_Photo_Mette_Johnsen_VisitDenmark.jpg) no-repeat;
     background-size: cover;
     margin: 0;
-    font-family: Arial, Serif, serif;
 }
 
 .content_wrapper {
-    margin: 50px auto 50px;
+    margin: 0 auto 50px;
     padding: 30px;
     max-width: 1200px;
 }
@@ -156,9 +161,10 @@ main .block_list a p, .block_list a h3 {
 /* FOOTER
 -------------------------------------------- */
 footer {
-    background: #222222F0;
+    background: #222222;
     color: #FFFFFF;
     padding-left: 20px;
     padding-top: 5px;
     padding-bottom: 20px;
+
 }

@@ -6,15 +6,19 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
-<div class="content_wrapper">
-    <h1><span th:text="${attraction.name}"></span> tags</h1>
-    <table>
-        <tr th:each="tag: ${attraction.tags}">
-            <td th:text="${tag.getDisplayName()}"></td>
-        </tr>
-    </table>
+<main>
+    <div class="content_wrapper">
+        <h1><span th:text="${attraction.name}"></span> tags</h1>
+        <table>
+            <tr th:each="tag: ${attraction.tags}">
+                <td th:text="${tag.getDisplayName()}"></td>
+            </tr>
+        </table>
 
-    <a th:href="@{/attractions}" class="btn">Tilbage</a>
-</div>
+        <a th:href="@{/attractions}" class="btn">Tilbage</a>
+    </div>
+</main>
+
+<div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>
