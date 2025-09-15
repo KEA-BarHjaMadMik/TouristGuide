@@ -6,6 +6,8 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
+<div th:replace="fragments/header :: header">...</div>
+
 <main>
     <div class="content_wrapper">
         <h1><span th:text="${attraction.name}"></span> tags</h1>

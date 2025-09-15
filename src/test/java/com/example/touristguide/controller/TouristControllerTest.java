@@ -6,14 +6,12 @@ import com.example.touristguide.model.TouristAttraction;
 import com.example.touristguide.service.TouristService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -87,14 +85,6 @@ class TouristControllerTest {
                         .param("tags", "LUKSUS"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/attractions"));
-
-//        ArgumentCaptor<TouristAttraction> captor = ArgumentCaptor.forClass(TouristAttraction.class);
-//        verify(touristService).addAttraction(captor.capture());
-//
-//        TouristAttraction captured = captor.getValue();
-//        assertEquals("Storkespringvandet", captured.getName());
-//        assertEquals("Springvand i København", captured.getDescription());
-//        assertEquals(DanishCity.ODENSE, captured.getCity());
 
         verify(touristService).addAttraction(
                 new TouristAttraction(

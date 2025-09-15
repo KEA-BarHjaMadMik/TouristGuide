@@ -20,23 +20,6 @@ body {
     margin: 0;
 }
 
-main {
-    display: flex;
-    background: url(../images/BG_Klitmøller_Photo_Mette_Johnsen_VisitDenmark.jpg) no-repeat;
-    background-size: cover;
-    margin: 0;
-}
-
-.content_wrapper {
-    margin: 0 auto 50px;
-    padding: 30px;
-    max-width: 1200px;
-}
-
-body .content_wrapper {
-    background: rgb(255 255 255 / 0.9);
-}
-
 a {
     text-decoration: none;
 }
@@ -51,6 +34,12 @@ table, th, td {
     padding: 5px;
     text-align: justify;
     vertical-align: top;
+}
+
+.center_aligned {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Form Layout */
@@ -120,17 +109,63 @@ button:hover,
     background: #ddd;
 }
 
-.center_aligned {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* HEADER
 -------------------------------------------- */
+header {
+    background: #222222;
+    color: #FFFFFF;
+}
+
+header .content_wrapper {
+    margin: 0 auto 0;
+    max-width: 1200px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#logo {
+    height: 80px;
+}
+
+header nav {
+    align-self: end;
+}
+
+.nav_btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    gap: 5px;
+    border-radius: 4px;
+}
+
+.nav_btn:hover {
+    background: #444444;
+}
 
 /* MAIN
 -------------------------------------------- */
+main {
+    display: flex;
+    background: url(../images/BG_Klitmøller_Photo_Mette_Johnsen_VisitDenmark.jpg) no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+main .content_wrapper {
+    margin: 50px auto 50px;
+    padding: 30px;
+    max-width: 1200px;
+    background: rgb(255 255 255 / 0.9);
+}
+
 .block_list {
     margin: 0 auto;
     list-style-type: none;
@@ -166,5 +201,4 @@ footer {
     padding-left: 20px;
     padding-top: 5px;
     padding-bottom: 20px;
-
 }
