@@ -1,0 +1,204 @@
+/* GLOBAL STYLES
+-------------------------------------------- */
+/*
+  https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*/
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html, body{
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Serif, serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: justify;
+    vertical-align: top;
+}
+
+.center_aligned {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Layout */
+.form_row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.form_row > label {
+    display: inline-block;
+    width: 150px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.form_row input,
+.form_row select,
+.form_row textarea,
+#tags {
+    flex: 1;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.form_actions {
+    margin-top: 20px;
+}
+
+/* Tags container inside form_row */
+#tags {
+    display: flex;
+    flex-wrap: wrap;      /* checkboxes can wrap to next line */
+    gap: 10px 20px;       /* row gap, col gap (smaller gap is cleaner) */
+    align-items: flex-start;
+    justify-content: flex-start; /* ✅ left-align instead of right */
+}
+
+/* Each checkbox + text */
+#tags label {
+    display: inline-flex;  /* inline-flex keeps box and text close */
+    align-items: center;   /* vertical align text with checkbox */
+    gap: 5px;              /* small gap between box and text */
+    margin: 0;             /* remove unexpected margins */
+}
+
+/* Buttons */
+button, button[type="submit"],
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #eee;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    gap: 5px;
+}
+
+button:hover,
+.btn:hover {
+    background: #ddd;
+}
+
+
+/* HEADER
+-------------------------------------------- */
+header {
+    background: #222222;
+    color: #FFFFFF;
+}
+
+header .content_wrapper {
+    margin: 0 auto 0;
+    max-width: 1200px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#logo {
+    height: 80px;
+}
+
+header nav {
+    align-self: end;
+}
+
+.nav_btn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    gap: 5px;
+    border-radius: 4px;
+}
+
+.nav_btn:hover {
+    background: #444444;
+}
+
+/* MAIN
+-------------------------------------------- */
+main {
+    display: flex;
+    background: url(../images/BG_Klitmøller_Photo_Mette_Johnsen_VisitDenmark.jpg) no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+main .content_wrapper {
+    margin: 50px auto 50px;
+    padding: 30px;
+    max-width: 1200px;
+    background: rgb(255 255 255 / 0.9);
+}
+
+.block_list {
+    margin: 0 auto;
+    list-style-type: none;
+    padding: 0;
+}
+
+main .block_list li {
+    display: inline-flex;
+    height: 500px;
+    width: 300px;
+    margin: 20px;
+    background: #222222F0;
+}
+
+main .block_list a p, .block_list a h3 {
+    color: #FFFFFF;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.block_list img {
+    object-fit: cover;
+    object-position: center center;
+    width: 300px;
+    height: 300px;
+}
+
+/* FOOTER
+-------------------------------------------- */
+footer {
+    background: #222222;
+    color: #FFFFFF;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
