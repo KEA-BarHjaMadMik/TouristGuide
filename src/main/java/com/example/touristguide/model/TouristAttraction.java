@@ -9,7 +9,7 @@ public class TouristAttraction {
     private DanishCity city;
     private List<AttractionTags> tags;
 
-    public TouristAttraction(){
+    public TouristAttraction() {
         //Default constructor
     }
 
@@ -36,19 +36,19 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public List<AttractionTags> getTags(){
+    public List<AttractionTags> getTags() {
         return tags;
     }
 
-    public void setTags(List<AttractionTags> tags){
+    public void setTags(List<AttractionTags> tags) {
         this.tags = tags;
     }
 
-    public DanishCity getCity(){
+    public DanishCity getCity() {
         return city;
     }
 
-    public void setCity(DanishCity city){
+    public void setCity(DanishCity city) {
         this.city = city;
     }
 
@@ -56,7 +56,10 @@ public class TouristAttraction {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         TouristAttraction that = (TouristAttraction) o;
-        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && city == that.city && Objects.equals(tags, that.tags);
+        return Objects.equals(name, that.name)
+                && Objects.equals(description, that.description)
+                && city == that.city
+                && Objects.equals(tags, that.tags);
     }
 
     @Override
