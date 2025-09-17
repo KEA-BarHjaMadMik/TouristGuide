@@ -7,29 +7,63 @@
 <body>
 <div th:fragment="footer">
     <footer>
-        <p>Kontakt:</p>
-        <ul class="bullet_list">
-            <li>Tlf: +45 29 85 51 58</li>
-            <li>Email: <a href="mailto:contact@adrenalindenmark.com">contact@adrenalinedenmark.com</a></li>
-        </ul>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- Company Info -->
+                <div class="footer-column">
+                    <h3>Adrenaline Denmark</h3>
+                    <p>Din guide til Danmarks vildeste oplevelser og adrenalinfulde attraktioner.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
 
-        <p>
-            Find os her:
-            <a href="https://maps.app.goo.gl/d9JBche4gujABiCX9" target="_blank">
-                Se rute i Google Maps
-            </a>
-        </p>
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>+45 29 85 51 58</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <a href="mailto:contact@adrenalinedenmark.com">contact@adrenalinedenmark.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <a href="https://maps.app.goo.gl/uuPPRCHmRfA8mBw36" target="_blank">Se rute i Google Maps</a>
+                        </div>
+                    </div>
+                </div>
 
-        <p>Andre websider:</p>
-        <nav>
-            <a href="https://www.visitcopenhagen.com/copenhagen/planning/kitekollektivet-gdk1123099">Kitesurfing
-            </a> |
-            <a href="https://www.getyourguide.dk/kobenhavn-l12/kobenhavn-tandem-skydive-det-ultimative-kobenhavner-eventyr-t836376/?ranking_uuid=24527097-a8d7-46bd-b36b-4f5fb4d689c0">Skydiving
-            </a> |
-            <a href="https://www.visitaarhus.com/aarhus-region/see-and-do/outdoor-activities/mountain-biking">Mountain
-                biking
-            </a>
-        </nav>
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h3>Hurtige Links</h3>
+                    <div class="footer-links">
+                        <a th:href="@{/attractions}">Alle Attraktioner</a>
+                        <a th:href="@{/attractions/add}">Tilføj Attraktion</a>
+                        <a href="https://www.visitcopenhagen.com/copenhagen/planning/kitekollektivet-gdk1123099" target="_blank">Kitesurfing</a>
+                        <a href="https://www.getyourguide.dk/kobenhavn-l12/kobenhavn-tandem-skydive-det-ultimative-kobenhavner-eventyr-t836376/" target="_blank">Skydiving</a>
+                        <a href="https://www.visitaarhus.com/aarhus-region/see-and-do/outdoor-activities/mountain-biking" target="_blank">Mountain Biking</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Adrenaline Denmark. Alle rettigheder forbeholdes.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privatlivspolitik</a>
+                        <a href="#">Vilkår og betingelser</a>
+                        <a href="#">Cookie-politik</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 </div>
 </body>

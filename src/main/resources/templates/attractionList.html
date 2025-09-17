@@ -6,41 +6,52 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
-<div th:replace="fragments/header :: header">...</div>
+<div th:replace="~{fragments/header :: header}">...</div>
 <main>
     <div class="content_wrapper">
         <h1>Turistattraktioner</h1>
 
-        <p th:if="${attractions.isEmpty()}">Ingen attraktioner at vise...</p>
-        <table th:unless="${attractions.isEmpty()}">
-            <thead>
-            <tr>
-                <th>Navn</th>
-                <th>Beskrivelse</th>
-                <th>By</th>
-            </tr>
-            </thead>
+        <p th:if="${attractions.isEmpty()}" class="empty-state">Ingen attraktioner at vise...</p>
+        <div th:unless="${attractions.isEmpty()}" class="table-container">
+            <table class="attractions-table">
+                <thead>
+                    <tr>
+                        <th>Navn</th>
+                        <th>Beskrivelse</th>
+                        <th>By</th>
+                        <th>Handlinger</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="attraction: ${attractions}">
+                        <td class="attraction-name" th:text="${attraction.name}">Attraction Name</td>
+                        <td class="attraction-description" th:text="${attraction.description}">Description</td>
+                        <td class="attraction-city">
+                            <span class="city-badge" th:if="${attraction.city != null}" th:text="${attraction.city.getDisplayName()}">City</span>
+                        </td>
+                        <td class="attraction-actions">
+                            <div class="action-buttons">
+                                <a class="btn btn-info btn-sm" th:href="@{/attractions/{name}(name=${attraction.name})}">👁️ Se detaljer</a>
+                                <a class="btn btn-primary btn-sm" th:href="@{/attractions/{name}/edit(name=${attraction.name})}">✏️ Opdater</a>
+                                <a class="btn btn-secondary btn-sm" th:href="@{/attractions/{name}/tags(name=${attraction.name})}">🏷️ Tags</a>
+                                <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post" class="delete-form">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Er du sikker på at du vil slette denne attraktion?')">🗑️ Slet</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <tbody>
-            <tr th:each="attraction: ${attractions}">
-                <td th:text="${attraction.name}"></td>
-                <td th:text="${attraction.description}"></td>
-                <td th:if="${attraction.city != null}" th:text="${attraction.city.getDisplayName()}"></td>
-                <td>
-                    <a class="btn" th:href="@{/attractions/{name}/edit(name=${attraction.name})}">Opdater</a>
-                    <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post">
-                        <button type="submit">Slet</button>
-                    </form>
-                    <a class="btn" th:href="@{/attractions/{name}/tags(name=${attraction.name})}">Tags</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <a class="btn" th:href="@{/attractions/add}">Tilføj attraktion</a>
+        <div style="text-align: center; margin-top: var(--space-xl);">
+            <a class="btn btn-success btn-large" th:href="@{/attractions/add}">
+                ➕ Tilføj Ny Attraktion
+            </a>
+        </div>
     </div>
 </main>
 
-<div th:replace="fragments/footer :: footer">...</div>
+<div th:replace="~{fragments/footer :: footer}">...</div>
 </body>
 </html>

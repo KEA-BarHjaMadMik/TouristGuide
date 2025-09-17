@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <title>Tilføj Turistattraktion</title>
     <link th:href="@{/css/main.css}" rel="stylesheet">
-
 </head>
 <body>
-<div th:replace="fragments/header :: header">...</div>
+<div th:replace="~{fragments/header :: header}">...</div>
 
 <main>
     <div class="content_wrapper">
@@ -42,13 +41,17 @@
             </div>
 
             <div class="form_actions">
-                <button type="submit" class="btn">OK</button>
-                <a th:href="@{/attractions}" class="btn">Fortryd</a>
+                <button type="submit" class="btn btn-primary btn-large">
+                    ✅ Gem Attraktion
+                </button>
+                <a th:href="@{/attractions}" class="btn btn-secondary">
+                    ❌ Fortryd
+                </a>
             </div>
         </form>
     </div>
 </main>
 
-<div th:replace="fragments/footer :: footer">...</div>
+<div th:replace="~{fragments/footer :: footer}">...</div>
 </body>
 </html>

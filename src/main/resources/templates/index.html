@@ -10,70 +10,80 @@
 <!-- HEADER
 --------------------------------->
 
-<div th:replace="fragments/header :: header">...</div>
+<div th:replace="~{fragments/header :: header}">...</div>
 
 <!-- MAIN
 --------------------------------->
 
 <main>
     <div class="content_wrapper">
-        <h1 class="center_aligned">Velkommen til Adrenaline Denmark – din guide til vilde oplevelser!</h1>
-        <p>Er du typen, der søger sus i maven, fart over feltet og oplevelser, der får pulsen til at stige? Så er vores
-            turistguide lige noget for dig. Her finder du en samlet oversigt over de bedste attraktioner i Danmark for
-            adrenalin-junkies – fra højtflyvende aktiviteter til nervepirrende udfordringer på land og til vands.</p>
-
-        <p>Guiden dækker hele Danmark, så uanset om du besøger København, Aarhus, Aalborg eller de små kroge langs
-            kysten,
-            kan du finde spænding tæt på dig. Den fungerer både som en inspirationskilde og en praktisk
-            planlægningshjælp:
-            Du kan læse beskrivelser af oplevelserne, få tips til udstyr, finde kontaktoplysninger og se, hvordan du
-            booker
-            tid. </p>
-
-        <p>Målgruppen er alle, der elsker action – unge, voksne, singler, vennegrupper eller familier med teenagere, der
-            gerne vil have mere end sightseeing og museumsbesøg. Kort sagt: Hvis du er på jagt efter noget, der får
-            adrenalinen til at pumpe, er denne guide din indgang til Danmarks vildeste oplevelser. </p>
-
-        <p>Fra klatring i trætoppene, bungeejump og wakeboarding til gokart, mountainbike og kitesurfing – her finder du
-            alt
-            det, der gør en ferie uforglemmelig.</p>
-
-        <h2>Start planlægningen</h2>
-        <div class="center_aligned">
-            <ul class="block_list">
-                <li>
-                    <a href="http://localhost:8080/attractions/GOKART">
-                        <img src="/images/attraction_gokart.png" alt="Adrenalinsus på Sjælland i gokarts">
-                        <h3>GOKART</h3>
-                        <p>Oplev fart, sjov og adrenalin på vores gokartbane! Udfordr venner, familie eller kolleger i
-                            spændende løb, hvor skarpe sving og høj fart giver den ultimative køreglæde...</p>
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Velkommen til Adrenaline Denmark</h1>
+                <h2>- Danmarks vildeste oplevelser!</h2>
+                <p class="hero-subtitle">Din ultimative guide til Danmarks vildeste oplevelser! Fra højtflyvende aktiviteter til nervepirrende udfordringer – find den perfekte adrenalin-rush tæt på dig.</p>
+                <div class="hero-buttons">
+                    <a th:href="@{/attractions}" class="cta-button">
+                        🚀 Udforsk Attraktioner
                     </a>
-                </li>
-
-                <li>
-                    <a href="http://localhost:8080/attractions/PRØVEKØR_DRØMMEBILEN_-_PORSCHE_911_CARRERA_S">
-                        <img src="/images/attraction_porsche.png" alt="Porsche 911 Carrera S">
-                        <h3>PRØVEKØR DRØMMEBILEN - PORSCHE 911 CARRERA S</h3>
-                        <p>Lej din drømmebil for en dag! Oplev drømmen og prøv en af verdens mest berømte biler -
-                            Porsche 911 Carrera S. Bilen er i sort metallic med sort læderindtræk...</p>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="http://localhost:8080/attractions/tandemspring">
-                        <img src="/images/attraction_skydive.png" alt="Tandem skydive">
-                        <h3>TANDEMSPRING</h3>
-                        <p>Den ultimative oplevelse med et andet menneske! Tag din ven eller kæreste i hånden, spring ud
-                            i det og oplev suset i maven sammen. Denne oplevelse vil uden tvivl knytte bånd for
-                            livet...</p>
-                    </a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-        <a href="http://localhost:8080/attractions"><h2>Se alle attraktioner</h2></a>
+
+
+        <!-- Featured Attractions -->
+        <section class="featured-section">
+            <h2>Populære Attraktioner</h2>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="/images/attraction_gokart.png" alt="Adrenalinsus på Sjælland i gokarts">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Gokart</h3>
+                        <p>Oplev fart, sjov og adrenalin på vores gokartbane! Udfordr venner, familie eller kolleger i spændende løb.</p>
+                        <a th:href="@{/attractions/GOKART}" class="btn btn-primary">Se detaljer</a>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="/images/attraction_porsche.png" alt="Porsche 911 Carrera S">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Porsche 911 Carrera S</h3>
+                        <p>Lej din drømmebil for en dag! Oplev drømmen og prøv en af verdens mest berømte biler.</p>
+                        <a th:href="@{/attractions/PRØVEKØR DRØMMEBILEN - PORSCHE 911 CARRERA S}" class="btn btn-primary">Se detaljer</a>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="/images/attraction_skydive.png" alt="Tandem skydive">
+                    </div>
+                    <div class="featured-content">
+                        <h3>Tandemspring</h3>
+                        <p>Den ultimative oplevelse! Spring ud i det og oplev suset i maven sammen med en ven eller kæreste.</p>
+                        <a th:href="@{/attractions/tandemspring}" class="btn btn-primary">Se detaljer</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Klar til din næste adrenalin-rush?</h2>
+                <p>Udforsk alle vores spændende attraktioner og find din næste vilde oplevelse i Danmark</p>
+                <a th:href="@{/attractions}" class="cta-button btn-large">
+                    🎢 Se Alle Attraktioner
+                </a>
+            </div>
+        </section>
     </div>
 </main>
 
-<div th:replace="fragments/footer :: footer">...</div>
+<div th:replace="~{fragments/footer :: footer}">...</div>
 </body>
 </html>
