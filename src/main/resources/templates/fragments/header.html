@@ -6,13 +6,39 @@
 </head>
 <body>
     <div th:fragment="header">
-        <header>
-            <div class="content_wrapper">
-                <img id="logo" src="/images/logo.jpeg" alt="logo"/>
-                <nav>
-                    <a th:href="@{/}" class="nav_btn">Forside</a>
-                    <a th:href="@{/attractions}" class="nav_btn">Attraktioner</a>
-                    <a th:href="@{/contact}" class="nav_btn">Kontakt</a>
+        <header class="site-header">
+            <div class="header-container">
+                <div class="logo-section">
+                    <a th:href="@{/}">
+                        <img id="logo" src="/images/logo.jpeg" alt="Adrenaline Denmark Logo" class="logo-img"/>
+                    </a>
+                </div>
+
+                <!-- CSS-only mobile menu toggle -->
+                <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
+                <label for="mobile-menu-toggle" class="mobile-menu-toggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </label>
+
+                <nav class="main-nav">
+                    <a th:href="@{/}" class="nav-link">
+                        <span class="nav-icon">🏠</span>
+                        <span class="nav-text">Forside</span>
+                    </a>
+                    <a th:href="@{/attractions}" class="nav-link">
+                        <span class="nav-icon">🎢</span>
+                        <span class="nav-text">Attraktioner</span>
+                    </a>
+                    <a th:href="@{/attractions/add}" class="nav-link">
+                        <span class="nav-icon">➕</span>
+                        <span class="nav-text">Tilføj</span>
+                    </a>
+                    <a th:href="@{/contact}" class="nav-link">
+                        <span class="nav-icon">📞</span>
+                        <span class="nav-text">Kontakt</span>
+                    </a>
                 </nav>
             </div>
         </header>

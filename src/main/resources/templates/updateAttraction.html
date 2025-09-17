@@ -6,7 +6,7 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
-<div th:replace="fragments/header :: header">...</div>
+<div th:replace="~{fragments/header :: header}">...</div>
 
 <main>
     <div class="content_wrapper">
@@ -49,6 +49,6 @@
     </div>
 </main>
 
-<div th:replace="fragments/footer :: footer">...</div>
+<div th:replace="~{fragments/footer :: footer}">...</div>
 </body>
 </html>
