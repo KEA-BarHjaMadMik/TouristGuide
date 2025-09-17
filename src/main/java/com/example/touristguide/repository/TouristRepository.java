@@ -36,7 +36,7 @@ public class TouristRepository {
         );
 
         addAttraction(new TouristAttraction(
-                        "PRØVEKØR_DRØMMEBILEN_-_PORSCHE_911_CARRERA_S",
+                        "PRØVEKØR DRØMMEBILEN - PORSCHE 911 CARRERA S",
                         "Lej din drømmebil for en dag! Oplev drømmen og prøv en af verdens mest berømte biler - Porsche 911 Carrera S. Bilen er i sort metallic med sort læderindtræk og baghjulstræk ligesom en rigtig Porsche 911 skal være. Bilen er desuden udstyret med et sportsudstødningssystem for at få mere lyd i bilen og et Bose lydsystem, så du kan nyde din yndlingsmusik, mens du kører. Udover det er den også udstyret med lir i form af Porsche active suspension management, 8-trins dobbeltkoblingsboks, Apple carplay og glassoltag.",
                         DanishCity.AALBORG,
                         Arrays.asList(
