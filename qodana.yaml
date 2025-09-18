@@ -10,7 +10,12 @@ profile:
 
 #Enable inspections
 #include:
-#  - name: <SomeEnabledInspectionId>
+include:
+  - name: SpringMVCViewInspection
+    paths:
+      - src/main/java
+      - src/main/resources/templates
+
 
 #Disable inspections
 #exclude:
