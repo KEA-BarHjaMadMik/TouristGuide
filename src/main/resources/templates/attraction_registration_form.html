@@ -41,6 +41,11 @@
                 </div>
             </div>
 
+            <div class="form_row">
+                <label for="ticketPrice">Billetpris (DKK):</label>
+                <input required id="ticketPrice" type="number" step="0.01" min="0" th:field="*{ticketPrice}"/>
+            </div>
+
             <div class="form_actions">
                 <button type="submit" class="btn btn-primary btn-large">
                     ✅ Gem Attraktion

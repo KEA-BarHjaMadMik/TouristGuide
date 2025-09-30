@@ -8,16 +8,22 @@ public class TouristAttraction {
     private String description;
     private DanishCity city;
     private List<AttractionTags> tags;
+    private double ticketPrice;
 
     public TouristAttraction() {
         //Default constructor
     }
 
-    public TouristAttraction(String name, String description, DanishCity city, List<AttractionTags> tags) {
+    public TouristAttraction(String name, String description, DanishCity city, List<AttractionTags> tags, double ticketPrice) {
         this.name = name;
         this.description = description;
         this.city = city;
         this.tags = tags;
+        this.ticketPrice = ticketPrice;
+    }
+
+    public TouristAttraction(String name, String description, DanishCity city, List<AttractionTags> tags) {
+        this(name, description, city, tags, 0.0);
     }
 
     public String getName() {
@@ -50,6 +56,14 @@ public class TouristAttraction {
 
     public void setCity(DanishCity city) {
         this.city = city;
+    }
+
+    public double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(double ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
     @Override

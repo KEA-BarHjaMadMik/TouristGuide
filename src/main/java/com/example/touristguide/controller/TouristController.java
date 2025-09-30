@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("attractions")
 
@@ -20,8 +22,12 @@ public class TouristController {
 
 
     @GetMapping()
-    public String getAttractions(Model model) {
-        model.addAttribute("attractions", service.getAttractions());
+    public String getAttractions(@RequestParam(name="currency", defaultValue = "DKK") String currencyCode, Model model) {
+        List<TouristAttraction> attractions = service.getAttractionsInCurrency(currencyCode);
+
+        model.addAttribute("attractions",attractions);
+        model.addAttribute("selectedCurrency", currencyCode.toUpperCase());
+
         return "attractionList";
     }
 

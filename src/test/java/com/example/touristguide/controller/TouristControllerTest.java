@@ -48,7 +48,7 @@ class TouristControllerTest {
                 .andExpect(view().name("attractionList"))
                 .andExpect(model().attributeExists("attractions"));
 
-        verify(touristService).getAttractions();
+        verify(touristService).getAttractionsInCurrency("DKK");
     }
 
     @Test

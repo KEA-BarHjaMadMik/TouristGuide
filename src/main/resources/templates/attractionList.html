@@ -12,35 +12,61 @@
     <div class="content_wrapper">
         <h1>Turistattraktioner</h1>
 
+        <form th:action="@{/attractions}" method="get">
+            <div class="currency-converter">
+                <label for="currency-select">Vælg valuta:</label>
+                <select id="currency-select" name="currency">
+                    <option value="DKK" th:selected="${selectedCurrency == 'DKK'}">DKK</option>
+                    <option value="EUR" th:selected="${selectedCurrency == 'EUR'}">EUR</option>
+                    <option value="USD" th:selected="${selectedCurrency == 'USD'}">USD</option>
+                </select>
+                <button type="submit">Vis</button>
+            </div>
+        </form>
+
         <p th:if="${attractions.isEmpty()}" class="empty-state">Ingen attraktioner at vise...</p>
         <div th:unless="${attractions.isEmpty()}" class="table-container">
             <table class="attractions-table">
                 <thead>
-                    <tr>
-                        <th>Navn</th>
-                        <th>Beskrivelse</th>
-                        <th>By</th>
-                        <th>Handlinger</th>
-                    </tr>
+                <tr>
+                    <th>Navn</th>
+                    <th>Beskrivelse</th>
+                    <th>By</th>
+                    <th>Billetpris</th>
+                    <th>Handlinger</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="attraction: ${attractions}">
-                        <td class="attraction-name" th:text="${attraction.name}">Attraction Name</td>
-                        <td class="attraction-description" th:text="${attraction.description}">Description</td>
-                        <td class="attraction-city">
-                            <span class="city-badge" th:if="${attraction.city != null}" th:text="${attraction.city.getDisplayName()}">City</span>
-                        </td>
-                        <td class="attraction-actions">
-                            <div class="action-buttons">
-                                <a class="btn btn-info btn-sm" th:href="@{/attractions/{name}(name=${attraction.name})}">👁️ Se detaljer</a>
-                                <a class="btn btn-primary btn-sm" th:href="@{/attractions/{name}/edit(name=${attraction.name})}">✏️ Opdater</a>
-                                <a class="btn btn-secondary btn-sm" th:href="@{/attractions/{name}/tags(name=${attraction.name})}">🏷️ Tags</a>
-                                <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post" class="delete-form">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Er du sikker på at du vil slette denne attraktion?')">🗑️ Slet</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                <tr th:each="attraction: ${attractions}">
+                    <td class="attraction-name" th:text="${attraction.name}">Attraction Name</td>
+                    <td class="attraction-description" th:text="${attraction.description}">Description</td>
+                    <td class="attraction-city">
+                        <span class="city-badge" th:if="${attraction.city != null}"
+                              th:text="${attraction.city.getDisplayName()}">City</span>
+                    </td>
+                    <td th:if="${attraction.ticketPrice > 0}">
+                        <span th:text="${#numbers.formatDecimal(attraction.ticketPrice, 1, 2)}"></span>
+                        <span th:text="${selectedCurrency}"></span>
+                    </td>
+                    <td th:unless="${attraction.ticketPrice > 0}">-</td>
+                    <td class="attraction-actions">
+                        <div class="action-buttons">
+                            <a class="btn btn-info btn-sm" th:href="@{/attractions/{name}(name=${attraction.name})}">👁️
+                                Se detaljer</a>
+                            <a class="btn btn-primary btn-sm"
+                               th:href="@{/attractions/{name}/edit(name=${attraction.name})}">✏️ Opdater</a>
+                            <a class="btn btn-secondary btn-sm"
+                               th:href="@{/attractions/{name}/tags(name=${attraction.name})}">🏷️ Tags</a>
+                            <form th:action="@{/attractions/{name}/delete(name=${attraction.name})}" th:method="post"
+                                  class="delete-form">
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Er du sikker på at du vil slette denne attraktion?')">
+                                    🗑️ Slet
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
