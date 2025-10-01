@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tilføj Turistattraktion</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
@@ -38,6 +39,11 @@
                         <span th:text="${tag.getDisplayName()}"></span>
                     </label>
                 </div>
+            </div>
+
+            <div class="form_row">
+                <label for="ticketPrice">Billetpris (DKK):</label>
+                <input required id="ticketPrice" type="number" step="0.01" min="0" th:field="*{ticketPrice}"/>
             </div>
 
             <div class="form_actions">

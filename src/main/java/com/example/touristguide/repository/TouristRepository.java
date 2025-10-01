@@ -1,10 +1,16 @@
 package com.example.touristguide.repository;
 
 import com.example.touristguide.model.AttractionTags;
+import com.example.touristguide.model.CurrencyRates;
 import com.example.touristguide.model.DanishCity;
 import com.example.touristguide.model.TouristAttraction;
+import com.google.gson.Gson;
 import org.springframework.stereotype.Repository;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,10 +44,10 @@ public class TouristRepository {
         addAttraction(new TouristAttraction(
                         "Prøvekør Drømmebilen - Porsche 911 Carrera S",
                         """
-                        Lej din drømmebil for en dag! Oplev drømmen og prøv en af verdens mest berømte biler - Porsche 911 Carrera S. Bilen er i sort metallic med sort læderindtræk og baghjulstræk ligesom en rigtig Porsche 911 skal være.
-                        
-                        Bilen er desuden udstyret med et sportsudstødningssystem for at få mere lyd i bilen og et Bose lydsystem, så du kan nyde din yndlingsmusik, mens du kører. Udover det er den også udstyret med lir i form af Porsche active suspension management, 8-trins dobbeltkoblingsboks, Apple carplay og glassoltag.
-                        """,
+                                Lej din drømmebil for en dag! Oplev drømmen og prøv en af verdens mest berømte biler - Porsche 911 Carrera S. Bilen er i sort metallic med sort læderindtræk og baghjulstræk ligesom en rigtig Porsche 911 skal være.
+                                
+                                Bilen er desuden udstyret med et sportsudstødningssystem for at få mere lyd i bilen og et Bose lydsystem, så du kan nyde din yndlingsmusik, mens du kører. Udover det er den også udstyret med lir i form af Porsche active suspension management, 8-trins dobbeltkoblingsboks, Apple carplay og glassoltag.
+                                """,
                         DanishCity.AALBORG,
                         Arrays.asList(
                                 AttractionTags.MALMOE,
@@ -49,7 +55,8 @@ public class TouristRepository {
                                 AttractionTags.PORSCHE,
                                 AttractionTags.FART,
                                 AttractionTags.LUKSUS
-                        )
+                        ),
+                        2699
                 )
         );
 
@@ -85,7 +92,8 @@ public class TouristRepository {
                                 AttractionTags.BUNGEEJUMP,
                                 AttractionTags.SJAELLAND,
                                 AttractionTags.SNOR
-                        )
+                        ),
+                        645
                 )
         );
     }
@@ -133,5 +141,15 @@ public class TouristRepository {
 
     public List<AttractionTags> getTags() {
         return tags;
+    }
+
+    public CurrencyRates getCurrencyRates() throws IOException {
+        //Se evt. mere her: https://forexvalutaomregner.dk/pages/api);
+        URL url = new URL("https://cdn.forexvalutaomregner.dk/api/latest.json");
+
+        // Indlæsning af valutakurser
+        try (BufferedReader inputFromUrl = new BufferedReader(new InputStreamReader(url.openStream()))) {
+            return new Gson().fromJson(inputFromUrl, CurrencyRates.class);
+        }
     }
 }
