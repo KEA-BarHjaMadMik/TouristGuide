@@ -1,22 +1,22 @@
-DROP DATABASE IF EXISTS Attractions;
-CREATE DATABASE TouristGuide;
-USE TouristGuide;
+DROP DATABASE IF EXISTS tourist_guide;
+CREATE DATABASE tourist_guide;
+USE tourist_guide;
+
+CREATE TABLE Cities (
+    ZipCode CHAR(4) NOT NULL,
+    CityName VARCHAR(30) NOT NULL,
+    PRIMARY KEY (ZipCode)
+);
 
 CREATE TABLE Attractions (
     AttractionName VARCHAR(100) NOT NULL,
-    Description VARCHAR(550) NOT NULL,
+    Description VARCHAR(800) NOT NULL,
     ZipCode CHAR(4) NOT NULL,
     Price FLOAT NULL,
     PRIMARY KEY (AttractionName),
     CONSTRAINT FK_Attractions_ZipCode FOREIGN KEY (ZipCode)
         REFERENCES Cities (Zipcode)
         ON DELETE RESTRICT ON UPDATE CASCADE
-);
-
-CREATE TABLE Cities (
-    ZipCode CHAR(4) NOT NULL,
-    CityName VARCHAR(30) NOT NULL,
-    PRIMARY KEY (ZipCode)
 );
 
 CREATE TABLE Tags (
