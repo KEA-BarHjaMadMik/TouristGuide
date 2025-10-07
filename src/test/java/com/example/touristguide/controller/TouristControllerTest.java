@@ -1,7 +1,5 @@
 package com.example.touristguide.controller;
 
-import com.example.touristguide.model.AttractionTags;
-import com.example.touristguide.model.DanishCity;
 import com.example.touristguide.model.TouristAttraction;
 import com.example.touristguide.service.TouristService;
 import org.junit.jupiter.api.AfterEach;
@@ -90,8 +88,8 @@ class TouristControllerTest {
                 new TouristAttraction(
                         "Storkespringvandet",
                         "Springvand i København",
-                        DanishCity.ODENSE,
-                        List.of(AttractionTags.SJAELLAND, AttractionTags.LUKSUS)
+                        "ODENSE",
+                        List.of("SJAELLAND", "LUKSUS")
                 )
         );
     }

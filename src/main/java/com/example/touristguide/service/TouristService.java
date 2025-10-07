@@ -1,8 +1,6 @@
 package com.example.touristguide.service;
 
-import com.example.touristguide.model.AttractionTags;
 import com.example.touristguide.model.CurrencyRates;
-import com.example.touristguide.model.DanishCity;
 import com.example.touristguide.model.TouristAttraction;
 import com.example.touristguide.repository.TouristRepository;
 import org.springframework.stereotype.Service;
@@ -66,15 +64,15 @@ public class TouristService {
         return repository.updateAttraction(attraction);
     }
 
-    public TouristAttraction deleteAttraction(String name) {
+    public boolean deleteAttraction(String name) {
         return repository.deleteAttraction(name);
     }
 
-    public List<DanishCity> getCities() {
+    public List<String> getCities() {
         return repository.getCities();
     }
 
-    public List<AttractionTags> getTags() {
+    public List<String> getTags() {
         return repository.getTags();
     }
 }

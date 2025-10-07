@@ -27,7 +27,7 @@
             <div class="form_row">
                 <label for="city">By:</label>
                 <select id="city" th:field="*{city}">
-                    <option th:each="city: ${cities}" th:value="${city}" th:text="${city.getDisplayName()}"></option>
+                    <option th:each="city: ${cities}" th:value="${city}" th:text="${city}"></option>
                 </select>
             </div>
 
@@ -36,7 +36,7 @@
                 <div id="tags">
                     <label th:each="tag: ${tags}">
                         <input type="checkbox" th:field="*{tags}" th:value="${tag}"/>
-                        <span th:text="${tag.getDisplayName()}"></span>
+                        <span th:text="${tag}"></span>
                     </label>
                 </div>
             </div>
