@@ -100,7 +100,6 @@ INSERT INTO Cities VALUES(8381, 'Tilst');
 INSERT INTO Cities VALUES(8380, 'Trige');
 INSERT INTO Cities VALUES(8382, 'Hinnerup');
 INSERT INTO Cities VALUES(8520, 'Lystrup');
-INSERT INTO Cities VALUES(1432, 'København K');
 
 SET FOREIGN_KEY_CHECKS = 0;  -- disables foreign key checks
 TRUNCATE TABLE Attractions;
@@ -140,7 +139,7 @@ INSERT INTO Attractions VALUES(
     Perfekt som gave, som en grænseoverskridende udfordring til dig selv – eller som et uforglemmeligt højdepunkt på dit besøg i København.
     
     Er du klar til at tage springet?',
-    '1432',
+    '1000',
     645.0
 );
 

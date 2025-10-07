@@ -26,6 +26,12 @@ public class TouristRepository {
     public List<TouristAttraction> getAttractions() {
         String sql = "SELECT a.AttractionName, a.Description, c.CityName, a.Price FROM attractions a JOIN Cities c USING(ZipCode)";
 
+        RowMapper<TouristAttraction> rowMapper = getTouristAttractionRowMapper();
+
+        return jdbcTemplate.query(sql, rowMapper);
+    }
+
+    private RowMapper<TouristAttraction> getTouristAttractionRowMapper() {
         RowMapper<TouristAttraction> rowMapper = (rs, rowNum) -> {
             String tagSql = "SELECT TagName FROM AttractionTags WHERE AttractionName = ?";
             List<String> tags = jdbcTemplate.queryForList(tagSql, String.class, rs.getString("AttractionName"));
@@ -38,28 +44,16 @@ public class TouristRepository {
                     rs.getDouble("Price")
             );
         };
-
-        return jdbcTemplate.query(sql, rowMapper);
+        return rowMapper;
     }
 
     public TouristAttraction findAttractionByName(String name) {
         String sql = "SELECT a.AttractionName, a.Description, c.CityName, a.Price FROM attractions a JOIN Cities c USING(ZipCode) WHERE AttractionName = ?";
 
-        RowMapper<TouristAttraction> rowMapper = (rs, rowNum) -> {
-            String tagSql = "SELECT TagName FROM AttractionTags WHERE AttractionName = ?";
-            List<String> tags = jdbcTemplate.queryForList(tagSql, String.class, rs.getString("AttractionName"));
-
-            return new TouristAttraction(
-                    rs.getString("AttractionName"),
-                    rs.getString("Description"),
-                    rs.getString("CityName"),
-                    tags,
-                    rs.getDouble("Price")
-            );
-        };
+        RowMapper<TouristAttraction> rowMapper = getTouristAttractionRowMapper();
 
         List<TouristAttraction> results = jdbcTemplate.query(sql, rowMapper,name);
-        return results.isEmpty() ? null : results.get(0);
+        return results.isEmpty() ? null : results.getFirst();
     }
 
     @Transactional
@@ -71,7 +65,17 @@ public class TouristRepository {
         String description = attraction.getDescription();
 
         String zipCodeSql = "SELECT ZipCode FROM Cities WHERE CityName = ?";
-        String zipCode = jdbcTemplate.queryForObject(zipCodeSql, new Object[]{attraction.getCity()}, String.class);
+
+        List<String> zipCodes = jdbcTemplate.query(zipCodeSql, new Object[]{attraction.getCity()},
+                (rs, rowNum) -> rs.getString("ZipCode"));
+
+        if (zipCodes.isEmpty()) {
+            throw new IllegalArgumentException("City not found: " + attraction.getCity());
+        } else if (zipCodes.size() > 1) {
+            throw new IllegalArgumentException("Multiple ZipCodes found for city: " + attraction.getCity());
+        }
+
+        String zipCode = zipCodes.getFirst();
 
         double price = attraction.getTicketPrice();
 
@@ -105,7 +109,7 @@ public class TouristRepository {
             throw new IllegalArgumentException("Multiple ZipCodes found for city: " + updatedAttraction.getCity());
         }
 
-        String zipCode = zipCodes.get(0);
+        String zipCode = zipCodes.getFirst();
 
         String name = updatedAttraction.getName();
         double price = updatedAttraction.getTicketPrice();
