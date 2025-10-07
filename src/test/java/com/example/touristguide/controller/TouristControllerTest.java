@@ -1,7 +1,5 @@
 package com.example.touristguide.controller;
 
-import com.example.touristguide.model.AttractionTags;
-import com.example.touristguide.model.DanishCity;
 import com.example.touristguide.model.TouristAttraction;
 import com.example.touristguide.service.TouristService;
 import org.junit.jupiter.api.AfterEach;
@@ -38,8 +36,8 @@ class TouristControllerTest {
     @Test
     void shouldGetAttractions() throws Exception {
         List<TouristAttraction> attractions = List.of(
-                new TouristAttraction(rs.getString("name"), rs.getString("description"), rs.getString("city"), rs.getArray("tags"), rs.getDouble("ticketPrice")),
-                new TouristAttraction(rs.getString("name"), rs.getString("description"), rs.getString("city"), rs.getArray("tags"), rs.getDouble("ticketPrice"))
+                new TouristAttraction(),
+                new TouristAttraction()
         );
         when(touristService.getAttractions()).thenReturn(attractions);
 
@@ -90,8 +88,8 @@ class TouristControllerTest {
                 new TouristAttraction(
                         "Storkespringvandet",
                         "Springvand i København",
-                        DanishCity.ODENSE,
-                        List.of(AttractionTags.SJAELLAND, AttractionTags.LUKSUS)
+                        "ODENSE",
+                        List.of("SJAELLAND", "LUKSUS")
                 )
         );
     }

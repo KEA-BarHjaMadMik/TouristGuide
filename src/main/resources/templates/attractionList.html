@@ -42,7 +42,7 @@
                     <td class="attraction-description" th:text="${attraction.description}">Description</td>
                     <td class="attraction-city">
                         <span class="city-badge" th:if="${attraction.city != null}"
-                              th:text="${attraction.city.getDisplayName()}">City</span>
+                              th:text="${attraction.city}">City</span>
                     </td>
                     <td th:if="${attraction.ticketPrice > 0}">
                         <span th:text="${#numbers.formatDecimal(attraction.ticketPrice, 1, 2)}"></span>
