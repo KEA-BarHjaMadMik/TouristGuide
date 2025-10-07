@@ -6,15 +6,15 @@ import java.util.Objects;
 public class TouristAttraction {
     private String name;
     private String description;
-    private DanishCity city;
-    private List<AttractionTags> tags;
+    private String city;
+    private List<String> tags;
     private double ticketPrice;
 
     public TouristAttraction() {
         //Default constructor
     }
 
-    public TouristAttraction(String name, String description, DanishCity city, List<AttractionTags> tags, double ticketPrice) {
+    public TouristAttraction(String name, String description, String city, List<String> tags, double ticketPrice) {
         this.name = name;
         this.description = description;
         this.city = city;
@@ -22,7 +22,7 @@ public class TouristAttraction {
         this.ticketPrice = ticketPrice;
     }
 
-    public TouristAttraction(String name, String description, DanishCity city, List<AttractionTags> tags) {
+    public TouristAttraction(String name, String description, String city, List<String> tags) {
         this(name, description, city, tags, 0.0);
     }
 
@@ -42,19 +42,19 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public List<AttractionTags> getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<AttractionTags> tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
-    public DanishCity getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(DanishCity city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
@@ -72,7 +72,7 @@ public class TouristAttraction {
         TouristAttraction that = (TouristAttraction) o;
         return Objects.equals(name, that.name)
                 && Objects.equals(description, that.description)
-                && city == that.city
+                && city.equals(that.city)
                 && Objects.equals(tags, that.tags);
     }
 

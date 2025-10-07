@@ -38,8 +38,8 @@ class TouristControllerTest {
     @Test
     void shouldGetAttractions() throws Exception {
         List<TouristAttraction> attractions = List.of(
-                new TouristAttraction(),
-                new TouristAttraction()
+                new TouristAttraction(rs.getString("name"), rs.getString("description"), rs.getString("city"), rs.getArray("tags"), rs.getDouble("ticketPrice")),
+                new TouristAttraction(rs.getString("name"), rs.getString("description"), rs.getString("city"), rs.getArray("tags"), rs.getDouble("ticketPrice"))
         );
         when(touristService.getAttractions()).thenReturn(attractions);
 

@@ -49,7 +49,7 @@ public class TouristController {
 
     @GetMapping("/add")
     public String showAttractionRegistrationForm(Model model) {
-        model.addAttribute("attraction", new TouristAttraction());
+        model.addAttribute("attraction", new TouristAttraction(rs.getString("name"), rs.getString("description"), rs.getString("city"), rs.getArray("tags"), rs.getDouble("ticketPrice")));
         model.addAttribute("cities", service.getCities());
         model.addAttribute("tags", service.getTags());
         return "attraction_registration_form";
