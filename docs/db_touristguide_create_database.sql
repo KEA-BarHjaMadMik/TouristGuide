@@ -15,7 +15,7 @@ CREATE TABLE Attractions (
     Price FLOAT NULL,
     PRIMARY KEY (AttractionName),
     CONSTRAINT FK_Attractions_ZipCode FOREIGN KEY (ZipCode)
-        REFERENCES Cities (Zipcode)
+        REFERENCES Cities (ZipCode)
         ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
