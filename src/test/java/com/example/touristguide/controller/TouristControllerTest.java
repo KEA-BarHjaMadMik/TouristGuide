@@ -96,6 +96,7 @@ class TouristControllerTest {
 
     @Test
     void editAttraction() {
+        // TODO
         String attractionName = "Skydiving center";
 
         TouristAttraction attraction = new TouristAttraction(
