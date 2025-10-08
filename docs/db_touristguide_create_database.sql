@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS tourist_guide;
-CREATE DATABASE tourist_guide;
-USE tourist_guide;
+DROP DATABASE IF EXISTS adrenalinedanmark;
+CREATE DATABASE adrenalinedanmark;
+USE adrenalinedanmark;
 
 CREATE TABLE Cities (
     ZipCode CHAR(4) NOT NULL,

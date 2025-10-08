@@ -1,4 +1,4 @@
-USE tourist_guide;
+USE adrenalinedanmark;
 
 SET FOREIGN_KEY_CHECKS = 0;  -- disables foreign key checks
 TRUNCATE TABLE Cities;
