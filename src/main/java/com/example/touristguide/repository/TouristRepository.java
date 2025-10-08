@@ -32,7 +32,7 @@ public class TouristRepository {
     }
 
     private RowMapper<TouristAttraction> getTouristAttractionRowMapper() {
-        RowMapper<TouristAttraction> rowMapper = (rs, rowNum) -> {
+        return (rs, rowNum) -> {
             String tagSql = "SELECT TagName FROM AttractionTags WHERE AttractionName = ?";
             List<String> tags = jdbcTemplate.queryForList(tagSql, String.class, rs.getString("AttractionName"));
 
@@ -44,7 +44,6 @@ public class TouristRepository {
                     rs.getDouble("Price")
             );
         };
-        return rowMapper;
     }
 
     public TouristAttraction findAttractionByName(String name) {
@@ -64,18 +63,7 @@ public class TouristRepository {
         String name = attraction.getName();
         String description = attraction.getDescription();
 
-        String zipCodeSql = "SELECT ZipCode FROM Cities WHERE CityName = ?";
-
-        List<String> zipCodes = jdbcTemplate.query(zipCodeSql, new Object[]{attraction.getCity()},
-                (rs, rowNum) -> rs.getString("ZipCode"));
-
-        if (zipCodes.isEmpty()) {
-            throw new IllegalArgumentException("City not found: " + attraction.getCity());
-        } else if (zipCodes.size() > 1) {
-            throw new IllegalArgumentException("Multiple ZipCodes found for city: " + attraction.getCity());
-        }
-
-        String zipCode = zipCodes.getFirst();
+        String zipCode = getZipCodeFromAttraction(attraction);
 
         double price = attraction.getTicketPrice();
 
@@ -90,6 +78,21 @@ public class TouristRepository {
         return attraction;
     }
 
+    private String getZipCodeFromAttraction(TouristAttraction attraction) {
+        String zipCodeSql = "SELECT ZipCode FROM Cities WHERE CityName = ?";
+
+        List<String> zipCodes = jdbcTemplate.query(zipCodeSql, new Object[]{attraction.getCity()},
+                (rs, rowNum) -> rs.getString("ZipCode"));
+
+        if (zipCodes.isEmpty()) {
+            throw new IllegalArgumentException("City not found: " + attraction.getCity());
+        } else if (zipCodes.size() > 1) {
+            throw new IllegalArgumentException("Multiple ZipCodes found for city: " + attraction.getCity());
+        }
+
+        return zipCodes.getFirst();
+    }
+
 
     @Transactional
     public TouristAttraction updateAttraction(TouristAttraction updatedAttraction) {
@@ -98,18 +101,7 @@ public class TouristRepository {
 
         String description = updatedAttraction.getDescription();
 
-        String zipCodeSql = "SELECT ZipCode FROM Cities WHERE CityName = ?";
-
-        List<String> zipCodes = jdbcTemplate.query(zipCodeSql, new Object[]{updatedAttraction.getCity()},
-                (rs, rowNum) -> rs.getString("ZipCode"));
-
-        if (zipCodes.isEmpty()) {
-            throw new IllegalArgumentException("City not found: " + updatedAttraction.getCity());
-        } else if (zipCodes.size() > 1) {
-            throw new IllegalArgumentException("Multiple ZipCodes found for city: " + updatedAttraction.getCity());
-        }
-
-        String zipCode = zipCodes.getFirst();
+        String zipCode = getZipCodeFromAttraction(updatedAttraction);
 
         String name = updatedAttraction.getName();
         double price = updatedAttraction.getTicketPrice();
