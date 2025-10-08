@@ -96,6 +96,16 @@ class TouristControllerTest {
 
     @Test
     void editAttraction() {
+        // TODO
+        String attractionName = "Skydiving center";
+
+        TouristAttraction attraction = new TouristAttraction(
+                attractionName,
+                "Jump from 1 million meters to feel the thrill",
+                "Herning",
+                List.of("JYLLAND","Frit fald"),
+                100
+        );
     }
 
     @Test

@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS tourist_guide;
-CREATE DATABASE tourist_guide;
-USE tourist_guide;
+DROP DATABASE IF EXISTS adrenalinedanmark;
+CREATE DATABASE adrenalinedanmark;
+USE adrenalinedanmark;
 
 CREATE TABLE Cities (
     ZipCode CHAR(4) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE Attractions (
     Price FLOAT NULL,
     PRIMARY KEY (AttractionName),
     CONSTRAINT FK_Attractions_ZipCode FOREIGN KEY (ZipCode)
-        REFERENCES Cities (Zipcode)
+        REFERENCES Cities (ZipCode)
         ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
