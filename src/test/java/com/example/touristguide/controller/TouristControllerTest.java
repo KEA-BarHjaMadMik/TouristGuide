@@ -10,6 +10,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -56,8 +58,9 @@ class TouristControllerTest {
     @Test
     void shouldGetAttractionTags() throws Exception {
         String pathVariable = "GOKART";
+        List<String> tags = Arrays.asList("fart", "gokart");
 
-        TouristAttraction attraction = new TouristAttraction(pathVariable, null, null, null);
+        TouristAttraction attraction = new TouristAttraction(pathVariable, "God fart i gokart", "København K", tags);
 
         when(touristService.findAttractionByName(pathVariable)).thenReturn(attraction);
 
